@@ -11,7 +11,7 @@ command_exists() {
 install_rust() {
     if ! command_exists rustc; then
         echo "Rust is not installed. Installing Rust..."
-        curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+        curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
         source $HOME/.cargo/env
     else
         echo "Rust is already installed."
@@ -57,7 +57,7 @@ maybe_install_circom() {
         echo "Circom is already installed. Skipping installation."
     else
         # Directory to install Circom
-        read -p "Enter directory to install Circom (default: \$HOME/circom): " CIRCOM_INSTALL_DIR
+        # read -p "Enter directory to install Circom (default: \$HOME/circom): " CIRCOM_INSTALL_DIR
         CIRCOM_INSTALL_DIR=${CIRCOM_INSTALL_DIR:-"$HOME/circom"}
 
         install_circom
@@ -66,10 +66,9 @@ maybe_install_circom() {
 
 # Main function to orchestrate the installation
 main() {
-    ./scripts/install_just.sh
     install_rust
     maybe_install_circom
-    install_snarkjs
+    # install_snarkjs
     echo "Installation completed."
 }
 
