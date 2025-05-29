@@ -1,8 +1,19 @@
 # zkintro tutorial
-
 Repository for zkintro tutorial.
 
 See https://zkintro.com/articles/programming-zkps-from-zero-to-hero for context.
+
+## Custom Docker environment
+
+### build image
+```
+docker build -t zkintro .
+```
+
+### run container
+```
+docker run -it --rm zkintro
+```
 
 ## How to get started
 
